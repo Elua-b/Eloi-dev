@@ -136,7 +136,7 @@ export default function Portfolio() {
       {/* Social Links - Fixed Left Side */}
       <div className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 flex-col gap-6 z-40">
         <a
-          href="https://github.com/bugingoeloi"
+          href="https://github.com/elua-b"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-white transition-colors"
@@ -144,7 +144,7 @@ export default function Portfolio() {
           <Github size={20} />
         </a>
         <a
-          href="https://linkedin.com/in/bugingo-elua"
+          href="https://www.linkedin.com/in/bugingo-elua-b42402231/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-400 hover:text-white transition-colors"
