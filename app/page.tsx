@@ -1,48 +1,58 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import { useState, useEffect } from "react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  ExternalLink,
+  Menu,
+  X,
+  Link,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("home")
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "experience", "projects", "skills"]
+      const sections = ["home", "about", "experience", "projects", "skills"];
       const current = sections.find((section) => {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
         }
-        return false
-      })
-      if (current) setActiveSection(current)
-    }
+        return false;
+      });
+      if (current) setActiveSection(current);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setMobileMenuOpen(false)
+      element.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false);
     }
-  }
+  };
 
   const downloadResume = () => {
-    const link = document.createElement("a")
-    link.href = "/resume.pdf"
-    link.download = "Bugingo_Elua_Resume.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const link = document.createElement("a");
+    link.href = "/resume.pdf";
+    link.download = "Bugingo_Elua_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-300">
@@ -51,7 +61,9 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 border-2 border-gray-400 rotate-45 flex items-center justify-center">
-              <span className="text-gray-300 font-bold -rotate-45 text-sm">E</span>
+              <span className="text-gray-300 font-bold -rotate-45 text-sm">
+                E
+              </span>
             </div>
           </div>
 
@@ -60,7 +72,9 @@ export default function Portfolio() {
             <button
               onClick={() => scrollToSection("about")}
               className={`text-sm transition-colors ${
-                activeSection === "about" ? "text-white" : "text-gray-400 hover:text-white"
+                activeSection === "about"
+                  ? "text-white"
+                  : "text-gray-400 hover:text-white"
               }`}
             >
               About
@@ -68,7 +82,9 @@ export default function Portfolio() {
             <button
               onClick={() => scrollToSection("experience")}
               className={`text-sm transition-colors ${
-                activeSection === "experience" ? "text-white" : "text-gray-400 hover:text-white"
+                activeSection === "experience"
+                  ? "text-white"
+                  : "text-gray-400 hover:text-white"
               }`}
             >
               Experience
@@ -76,7 +92,9 @@ export default function Portfolio() {
             <button
               onClick={() => scrollToSection("projects")}
               className={`text-sm transition-colors ${
-                activeSection === "projects" ? "text-white" : "text-gray-400 hover:text-white"
+                activeSection === "projects"
+                  ? "text-white"
+                  : "text-gray-400 hover:text-white"
               }`}
             >
               Projects
@@ -84,7 +102,9 @@ export default function Portfolio() {
             <button
               onClick={() => scrollToSection("contact")}
               className={`text-sm transition-colors ${
-                activeSection === "contact" ? "text-white" : "text-gray-400 hover:text-white"
+                activeSection === "contact"
+                  ? "text-white"
+                  : "text-gray-400 hover:text-white"
               }`}
             >
               Contact
@@ -100,7 +120,10 @@ export default function Portfolio() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-gray-300" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button
+            className="md:hidden text-gray-300"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -108,7 +131,10 @@ export default function Portfolio() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-[#0a0a0a] border-t border-gray-800 px-6 py-4 space-y-4">
-            <button onClick={() => scrollToSection("about")} className="block text-sm text-gray-400 hover:text-white">
+            <button
+              onClick={() => scrollToSection("about")}
+              className="block text-sm text-gray-400 hover:text-white"
+            >
               About
             </button>
             <button
@@ -123,10 +149,16 @@ export default function Portfolio() {
             >
               Projects
             </button>
-            <button onClick={() => scrollToSection("contact")} className="block text-sm text-gray-400 hover:text-white">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="block text-sm text-gray-400 hover:text-white"
+            >
               Contact
             </button>
-            <button onClick={downloadResume} className="block text-sm text-gray-400 hover:text-white">
+            <button
+              onClick={downloadResume}
+              className="block text-sm text-gray-400 hover:text-white"
+            >
               Resume
             </button>
           </div>
@@ -151,7 +183,10 @@ export default function Portfolio() {
         >
           <Linkedin size={20} />
         </a>
-        <a href="mailto:bugingoeloi@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+        <a
+          href="mailto:bugingoeloi@gmail.com"
+          className="text-gray-400 hover:text-white transition-colors"
+        >
           <Mail size={20} />
         </a>
       </div>
@@ -171,16 +206,21 @@ export default function Portfolio() {
       <section id="home" className="min-h-screen flex items-center pt-20 px-6">
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <p className="text-sm text-gray-400 tracking-wide">Hi, my name is</p>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">Bugingo Elua.</h1>
+            <p className="text-sm text-gray-400 tracking-wide">
+              Hi, my name is
+            </p>
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              Bugingo Elua.
+            </h1>
             <p className="text-2xl md:text-3xl text-gray-400 leading-relaxed">
               I use code to build scalable solutions that drive impact.
             </p>
             <p className="text-gray-400 leading-relaxed max-w-xl">
-              I'm a dedicated software engineer with over 5 years of hands-on experience in full-stack development,
-              delivering impactful digital solutions across public and private sectors. I specialize in building
-              scalable applications, optimizing backend systems, and collaborating with cross-functional teams to bring
-              ideas to life.
+              I'm a dedicated software engineer with over 5 years of hands-on
+              experience in full-stack development, delivering impactful digital
+              solutions across public and private sectors. I specialize in
+              building scalable applications, optimizing backend systems, and
+              collaborating with cross-functional teams to bring ideas to life.
             </p>
             <Button
               size="lg"
@@ -211,27 +251,35 @@ export default function Portfolio() {
       <section id="about" className="min-h-screen flex items-center px-6 py-20">
         <div className="max-w-4xl mx-auto w-full">
           <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              About Me
+            </h2>
             <div className="flex-1 h-px bg-gray-800"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-4 text-gray-400 leading-relaxed">
               <p>
-                Hello! I'm Bugingo Elua, a software engineer based in Kigali, Rwanda. I code with purpose, precision,
-                and passion — whether it's supporting a tech startup, contributing to national memory preservation, or
-                working on fintech tools for development banks.
+                Hello! I'm Bugingo Elua, a software engineer based in Kigali,
+                Rwanda. I code with purpose, precision, and passion — whether
+                it's supporting a tech startup, contributing to national memory
+                preservation, or working on fintech tools for development banks.
               </p>
               <p>
-                From building backend architectures for French press ordering systems to creating digital archives that
-                preserve Rwanda's national identity, I bring dedication and technical excellence to every project.
+                From building backend architectures for French press ordering
+                systems to creating digital archives that preserve Rwanda's
+                national identity, I bring dedication and technical excellence
+                to every project.
               </p>
               <p>
-                I'm currently contributing to internal platforms at the Development Bank of Rwanda (BRD), supporting
-                financial project management and monitoring while working closely with finance and strategy teams to
-                digitize workflows.
+                I'm currently contributing to internal platforms at the
+                Development Bank of Rwanda (BRD), supporting financial project
+                management and monitoring while working closely with finance and
+                strategy teams to digitize workflows.
               </p>
-              <p className="text-white font-medium">Here are a few technologies I've been working with recently:</p>
+              <p className="text-white font-medium">
+                Here are a few technologies I've been working with recently:
+              </p>
               <div className="grid grid-cols-2 gap-2 text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-gray-500">▹</span>
@@ -265,8 +313,12 @@ export default function Portfolio() {
                 <h3 className="text-xl font-bold text-white mb-4">Education</h3>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-white font-medium">Software Engineering & Embedded Systems</p>
-                    <p className="text-sm text-gray-400">Rwanda Coding Academy (RCA)</p>
+                    <p className="text-white font-medium">
+                      Software Engineering & Embedded Systems
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      Rwanda Coding Academy (RCA)
+                    </p>
                     <p className="text-sm text-gray-500">2020 – Present</p>
                   </div>
                   <div className="pt-4 border-t border-gray-700">
@@ -286,10 +338,15 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="min-h-screen flex items-center px-6 py-20">
+      <section
+        id="experience"
+        className="min-h-screen flex items-center px-6 py-20"
+      >
         <div className="max-w-4xl mx-auto w-full">
           <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Experience</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Experience
+            </h2>
             <div className="flex-1 h-px bg-gray-800"></div>
           </div>
 
@@ -297,26 +354,37 @@ export default function Portfolio() {
             <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white">Software Engineer</h3>
-                  <p className="text-gray-400">Development Bank of Rwanda (BRD)</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Software Engineer
+                  </h3>
+                  <p className="text-gray-400">
+                    Development Bank of Rwanda (BRD)
+                  </p>
                 </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">Jul 2024 – Present</p>
+                <p className="text-sm text-gray-500 mt-2 md:mt-0">
+                  Jul 2024 – Present
+                </p>
               </div>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li className="flex gap-2">
                   <span className="text-gray-600 mt-1">▹</span>
-                  <span>Contributed to internal platforms supporting financial project management and monitoring</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
                   <span>
-                    Worked closely with finance and strategy teams to digitize workflows and streamline data analytics
+                    Contributed to internal platforms supporting financial
+                    project management and monitoring
                   </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-gray-600 mt-1">▹</span>
                   <span>
-                    Integrated third-party systems with BRD's internal data architecture for efficient reporting
+                    Worked closely with finance and strategy teams to digitize
+                    workflows and streamline data analytics
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Integrated third-party systems with BRD's internal data
+                    architecture for efficient reporting
                   </span>
                 </li>
               </ul>
@@ -325,19 +393,29 @@ export default function Portfolio() {
             <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white">Backend Developer</h3>
+                  <h3 className="text-xl font-bold text-white">
+                    Backend Developer
+                  </h3>
                   <p className="text-gray-400">Global Kwik Koders</p>
                 </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">Jan 2024 – Jun 2024</p>
+                <p className="text-sm text-gray-500 mt-2 md:mt-0">
+                  Jan 2024 – Jun 2024
+                </p>
               </div>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li className="flex gap-2">
                   <span className="text-gray-600 mt-1">▹</span>
-                  <span>Built and maintained scalable APIs for startup clients in e-commerce and logistics</span>
+                  <span>
+                    Built and maintained scalable APIs for startup clients in
+                    e-commerce and logistics
+                  </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-gray-600 mt-1">▹</span>
-                  <span>Integrated CI/CD pipelines and enhanced code quality through rigorous testing</span>
+                  <span>
+                    Integrated CI/CD pipelines and enhanced code quality through
+                    rigorous testing
+                  </span>
                 </li>
               </ul>
             </Card>
@@ -345,21 +423,31 @@ export default function Portfolio() {
             <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white">Backend Developer</h3>
-                  <p className="text-gray-400">Grab and Go (French Press Ordering App)</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Backend Developer
+                  </h3>
+                  <p className="text-gray-400">
+                    Grab and Go (French Press Ordering App)
+                  </p>
                 </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">Aug 2023 – Dec 2023</p>
+                <p className="text-sm text-gray-500 mt-2 md:mt-0">
+                  Aug 2023 – Dec 2023
+                </p>
               </div>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li className="flex gap-2">
                   <span className="text-gray-600 mt-1">▹</span>
                   <span>
-                    Designed backend architecture using NestJS and PostgreSQL for an intuitive coffee ordering system
+                    Designed backend architecture using NestJS and PostgreSQL
+                    for an intuitive coffee ordering system
                   </span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-gray-600 mt-1">▹</span>
-                  <span>Implemented order queuing, authentication, and mobile payment support</span>
+                  <span>
+                    Implemented order queuing, authentication, and mobile
+                    payment support
+                  </span>
                 </li>
               </ul>
             </Card>
@@ -368,77 +456,151 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen flex items-center px-6 py-20">
+      <section
+        id="projects"
+        className="min-h-screen flex items-center px-6 py-20"
+      >
         <div className="max-w-4xl mx-auto w-full">
           <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Key Projects</h2>
-            <div className="flex-1 h-px bg-gray-800"></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Key Projects
+            </h2>
+            <div className="flex-1 h-px bg-gray-800">
+              
+            </div>
+            
           </div>
 
           <div className="space-y-8">
             <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">Ibuka Store System</h3>
-                <ExternalLink className="text-gray-500 hover:text-white transition-colors" size={20} />
+                <h3 className="text-xl font-bold text-white">
+                  GrabAndGo-FrenchPress{" "}
+                </h3>
+                <ExternalLink
+                  className="text-gray-500 hover:text-white transition-colors"
+                  size={20}
+                />
               </div>
               <p className="text-gray-400 mb-4 leading-relaxed">
-                Built a digital archive and storytelling platform to conserve the history of the 1994 Genocide against
-                the Tutsi. Integrated multimedia content, survivor stories, and educational resources in a secure and
-                accessible platform. This project plays a vital role in preserving Rwanda's national identity and truth
-                for future generations.
+                As a Software Developer on the Grab and Go project, I
+                contributed to building a coffee ordering application that
+                allows users to order and prepay for coffee from cafés across
+                Kigali. I worked on developing a responsive user interface,
+                integrating secure payment and location-based services, and
+                implementing APIs for order and menu management. My role
+                involved collaborating with a cross-functional team to ensure a
+                seamless, user-friendly, and efficient coffee ordering
+                experience.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">React</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Node.js</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">PostgreSQL</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">AWS</span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Next js
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Nest js
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  PostgreSQL
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  AWS
+                </span>
               </div>
             </Card>
 
             <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">Hospital Management System</h3>
-                <ExternalLink className="text-gray-500 hover:text-white transition-colors" size={20} />
+                <h3 className="text-xl font-bold text-white">
+                  Hospital Management System
+                </h3>
+                <ExternalLink
+                  className="text-gray-500 hover:text-white transition-colors"
+                  size={20}
+                />
               </div>
               <p className="text-gray-400 mb-4 leading-relaxed">
-                Developed a comprehensive system handling patient data, appointments, and billing. Ensured data security
-                using encrypted storage and role-based access control. The system streamlines hospital operations and
-                improves patient care coordination.
+                Developed a comprehensive system handling patient data,
+                appointments, and billing. Ensured data security using encrypted
+                storage and role-based access control. The system streamlines
+                hospital operations and improves patient care coordination.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Angular</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Spring Boot</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">MySQL</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Docker</span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Angular
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Spring Boot
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  MySQL
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Docker
+                </span>
               </div>
             </Card>
 
             <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">BRD Digital Tools</h3>
-                <ExternalLink className="text-gray-500 hover:text-white transition-colors" size={20} />
+                <h3 className="text-xl font-bold text-white">
+                  BRD Digital Tools
+                </h3>
+                <ExternalLink
+                  className="text-gray-500 hover:text-white transition-colors"
+                  size={20}
+                />
               </div>
               <p className="text-gray-400 mb-4 leading-relaxed">
-                Contributed to platforms for investment tracking, project performance visualization, and funding request
-                management. Helped integrate third-party systems with BRD's internal data architecture for more
-                efficient reporting and decision-making.
+                Contributed to platforms for investment tracking, project
+                performance visualization, and funding request management.
+                Helped integrate third-party systems with BRD's internal data
+                architecture for more efficient reporting and decision-making.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">Next.js</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">NestJS</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">PostgreSQL</span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">TypeScript</span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Next.js
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  NestJS
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  PostgreSQL
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  TypeScript
+                </span>
               </div>
+            </Card>
+            <Card className="bg-gray-900 border-gray-800 p-0 overflow-hidden hover:border-gray-700 transition-colors">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+                <h3 className="text-xl font-bold text-white">Check All Personal Projects ---</h3>
+                <a
+                  href="https://eloiprojects.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                >
+
+                  <span>View all projects</span>
+                </a>
+              </div>
+              
             </Card>
           </div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen flex items-center px-6 py-20">
+      <section
+        id="skills"
+        className="min-h-screen flex items-center px-6 py-20"
+      >
         <div className="max-w-4xl mx-auto w-full">
           <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Technical Skills</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              Technical Skills
+            </h2>
             <div className="flex-1 h-px bg-gray-800"></div>
           </div>
 
@@ -446,41 +608,75 @@ export default function Portfolio() {
             <Card className="bg-gray-900 border-gray-800 p-6">
               <h3 className="text-lg font-bold text-white mb-4">Languages</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">JavaScript</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">TypeScript</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">Java</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">PHP</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">HTML/CSS</span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  JavaScript
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  TypeScript
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  Java
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  PHP
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  HTML/CSS
+                </span>
               </div>
             </Card>
 
             <Card className="bg-gray-900 border-gray-800 p-6">
               <h3 className="text-lg font-bold text-white mb-4">Frontend</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">React</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">Next.js</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">Angular</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">React Native</span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  React
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  Next.js
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  Angular
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  React Native
+                </span>
               </div>
             </Card>
 
             <Card className="bg-gray-900 border-gray-800 p-6">
               <h3 className="text-lg font-bold text-white mb-4">Backend</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">Node.js</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">NestJS</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">Spring Boot</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">Laravel</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">Django</span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  Node.js
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  NestJS
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  Spring Boot
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  Laravel
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  Django
+                </span>
               </div>
             </Card>
 
             <Card className="bg-gray-900 border-gray-800 p-6">
               <h3 className="text-lg font-bold text-white mb-4">Databases</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">PostgreSQL</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">MongoDB</span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">MySQL</span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  PostgreSQL
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  MongoDB
+                </span>
+                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
+                  MySQL
+                </span>
               </div>
             </Card>
           </div>
@@ -506,13 +702,19 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center px-6 py-20">
+      <section
+        id="contact"
+        className="min-h-screen flex items-center px-6 py-20"
+      >
         <div className="max-w-2xl mx-auto w-full text-center">
           <p className="text-sm text-gray-400 mb-4">What's Next?</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Get In Touch
+          </h2>
           <p className="text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto">
-            I'm currently open to new opportunities and interesting projects. Whether you have a question, want to
-            collaborate, or just want to say hi, feel free to reach out. I'll do my best to get back to you!
+            I'm currently open to new opportunities and interesting projects.
+            Whether you have a question, want to collaborate, or just want to
+            say hi, feel free to reach out. I'll do my best to get back to you!
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -541,7 +743,9 @@ export default function Portfolio() {
             size="lg"
             variant="outline"
             className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white bg-transparent"
-            onClick={() => (window.location.href = "mailto:bugingoeloi@gmail.com")}
+            onClick={() =>
+              (window.location.href = "mailto:bugingoeloi@gmail.com")
+            }
           >
             Say Hello
           </Button>
@@ -551,9 +755,11 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="border-t border-gray-800 py-8 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-sm text-gray-500">Designed & Built by Bugingo Elua</p>
+          <p className="text-sm text-gray-500">
+            Designed & Built by Bugingo Elua
+          </p>
         </div>
       </footer>
     </div>
-  )
+  );
 }
