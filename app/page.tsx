@@ -465,10 +465,7 @@ export default function Portfolio() {
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               Key Projects
             </h2>
-            <div className="flex-1 h-px bg-gray-800">
-              
-            </div>
-            
+            <div className="flex-1 h-px bg-gray-800"></div>
           </div>
 
           <div className="space-y-8">
@@ -512,7 +509,7 @@ export default function Portfolio() {
             <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-bold text-white">
-                  Hospital Management System
+                  Health Management tools and systems - Global Kwik Koders
                 </h3>
                 <ExternalLink
                   className="text-gray-500 hover:text-white transition-colors"
@@ -520,10 +517,18 @@ export default function Portfolio() {
                 />
               </div>
               <p className="text-gray-400 mb-4 leading-relaxed">
-                Developed a comprehensive system handling patient data,
-                appointments, and billing. Ensured data security using encrypted
-                storage and role-based access control. The system streamlines
-                hospital operations and improves patient care coordination.
+                contributed to the development of several national-scale digital
+                platforms, including the Rwanda Health Insurance Portal (RHIP),
+                a middleware solution that integrates medical records and
+                insurance systems to automate eligibility verification and
+                streamline claims management; the Higher Education Council
+                Management Information System (HEC MIS), which digitizes
+                academic credential verification to enhance efficiency and trust
+                in higher education processes; and the Rwanda Health Council
+                Connect (RHCC), a health-tech platform that modernizes the
+                licensing, accreditation, and professional development tracking
+                of healthcare practitioners to promote patient safety and
+                regulatory compliance.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
@@ -574,18 +579,18 @@ export default function Portfolio() {
             </Card>
             <Card className="bg-gray-900 border-gray-800 p-0 overflow-hidden hover:border-gray-700 transition-colors">
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
-                <h3 className="text-xl font-bold text-white">Check All Personal Projects ---</h3>
+                <h3 className="text-xl font-bold text-white">
+                  Check All Personal Projects ---
+                </h3>
                 <a
                   href="https://eloiprojects.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
                 >
-
                   <span>View all projects</span>
                 </a>
               </div>
-              
             </Card>
           </div>
         </div>
