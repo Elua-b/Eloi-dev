@@ -517,18 +517,13 @@ export default function Portfolio() {
                 />
               </div>
               <p className="text-gray-400 mb-4 leading-relaxed">
-                contributed to the development of several national-scale digital
-                platforms, including the Rwanda Health Insurance Portal (RHIP),
-                a middleware solution that integrates medical records and
-                insurance systems to automate eligibility verification and
-                streamline claims management; the Higher Education Council
-                Management Information System (HEC MIS), which digitizes
-                academic credential verification to enhance efficiency and trust
-                in higher education processes; and the Rwanda Health Council
-                Connect (RHCC), a health-tech platform that modernizes the
-                licensing, accreditation, and professional development tracking
-                of healthcare practitioners to promote patient safety and
-                regulatory compliance.
+                I worked on the Rwanda Health Insurance Portal (RHIP), a
+                health-tech middleware that integrates medical records and
+                insurance systems to automate eligibility checks, prevent fraud,
+                and streamline claims management. In addition, I contributed to
+                several internal projects focused on improving system
+                efficiency, data integration, and process automation within the
+                organization.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
