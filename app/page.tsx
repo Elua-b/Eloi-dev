@@ -424,6 +424,126 @@ export default function Portfolio() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-bold text-white">
+                    Software Developer Consultant
+                  </h3>
+                  <p className="text-gray-400">
+                    CKYC Lounge (Hospitality eCommerce)
+                  </p>
+                </div>
+                <p className="text-sm text-gray-500 mt-2 md:mt-0">
+                  Jan 2025 – Mar 2025
+                </p>
+              </div>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Developed a sophisticated lounge website with event management and booking systems using React and Node.js
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Implemented real-time booking capabilities and payment gateway integration
+                  </span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white">
+                    Developer Consultant
+                  </h3>
+                  <p className="text-gray-400">
+                    Secos Company (Business Services eCommerce)
+                  </p>
+                </div>
+                <p className="text-sm text-gray-500 mt-2 md:mt-0">
+                  Apr 2025 – Jun 2025
+                </p>
+              </div>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Built a professional corporate website using Next.js and Node.js with a focus on business solutions and services
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Implemented secure document sharing and team management features with role-based access control
+                  </span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white">
+                    Full Stack Developer
+                  </h3>
+                  <p className="text-gray-400">
+                    Uncles Restaurant (Dining & Online Ordering)
+                  </p>
+                </div>
+                <p className="text-sm text-gray-500 mt-2 md:mt-0">
+                  Jul 2025 – Sep 2025
+                </p>
+              </div>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Created a full-featured restaurant platform with React and Spring Boot for menu management and online ordering
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Integrated real-time order tracking and table reservation system
+                  </span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white">
+                    Software Developer Consultant
+                  </h3>
+                  <p className="text-gray-400">
+                    Kingfisher Hotel (Hospitality & Booking)
+                  </p>
+                </div>
+                <p className="text-sm text-gray-500 mt-2 md:mt-0">
+                  Sep 2025 – Nov 2025
+                </p>
+              </div>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Developed a premium hotel booking platform using React and NestJS with a focus on user experience
+                  </span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gray-600 mt-1">▹</span>
+                  <span>
+                    Implemented secure payment processing and multi-language support
+                  </span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white">
                     Backend Developer
                   </h3>
                   <p className="text-gray-400">
@@ -431,7 +551,7 @@ export default function Portfolio() {
                   </p>
                 </div>
                 <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Aug 2023 – Dec 2023
+                  Aug 2025 – Dec 2025
                 </p>
               </div>
               <ul className="space-y-2 text-gray-400 text-sm">
@@ -572,6 +692,110 @@ export default function Portfolio() {
                 </span>
               </div>
             </Card>
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">
+                  CKYC Lounge - Hospitality eCommerce
+                </h3>
+              </div>
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                As a Software Developer Consultant, I developed a sophisticated lounge website showcasing events, booking systems, and ambient services. The platform features a modern UI/UX design, real-time booking capabilities, and seamless integration with payment gateways. I implemented secure user authentication, event management, and a responsive design that works across all devices.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Next.js
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Node.js
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  MongoDB
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  TypeScript
+                </span>
+              </div>
+              <p className="text-sm text-gray-500 mt-3">Jan 2025 - Mar 2025</p>
+            </Card>
+
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">
+                  Secos Company - Business Services eCommerce
+                </h3>
+              </div>
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                As a Developer Consultant, I built a professional corporate website presenting business solutions, services, and company identity. The platform includes a content management system for easy updates, service showcases, and client portals. I implemented secure document sharing, team management features, and integrated analytics for tracking user engagement and lead generation.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  React
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Express
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  PostgreSQL
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  AWS
+                </span>
+              </div>
+              <p className="text-sm text-gray-500 mt-3">Apr 2025 - Jun 2025</p>
+            </Card>
+
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">
+                  Uncles Restaurant - Dining & Online Ordering
+                </h3>
+              </div>
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                As a Developer Consultant, I created a full-featured restaurant website with menu presentation, venue information, and online ordering capabilities. The platform includes table reservation, food delivery integration, and real-time order tracking. I implemented a user-friendly admin dashboard for menu management, order processing, and customer relationship management.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Vue.js
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Laravel
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  MySQL
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  DigitalOcean
+                </span>
+              </div>
+              <p className="text-sm text-gray-500 mt-3">Jul 2025 - Sep 2025</p>
+            </Card>
+
+            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">
+                  Kingfisher Hotel - Hospitality & Booking
+                </h3>
+              </div>
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                As a Developer Consultant, I developed a premium hotel website showcasing amenities, rooms, booking system, and guest services. The platform features a room availability checker, online booking system, and integration with property management software. I implemented a responsive design, multi-language support, and secure payment processing to enhance the guest booking experience.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Angular
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Spring Boot
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  MongoDB
+                </span>
+                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
+                  Google Cloud
+                </span>
+              </div>
+              <p className="text-sm text-gray-500 mt-3">Sep 2025 - Nov 2025</p>
+            </Card>
+
             <Card className="bg-gray-900 border-gray-800 p-0 overflow-hidden hover:border-gray-700 transition-colors">
               <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
                 <h3 className="text-xl font-bold text-white">
