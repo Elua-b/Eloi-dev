@@ -146,7 +146,7 @@ export default function Portfolio() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/85 backdrop-blur-md px-10 h-20 flex items-center justify-between transition-all duration-300">
         <div className="flex items-center justify-between w-full max-w-[1600px] mx-auto">
-          <div className="group cursor-pointer">
+          <div className="group cursor-pointer" aria-label="Home">
             <div className="relative w-10 h-10 flex items-center justify-center border-2 border-green rounded-sm transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1">
               <span className="text-green font-bold text-lg font-mono">E</span>
               <div className="absolute inset-0 border-2 border-green rounded-sm opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-all duration-300 -z-10"></div>
@@ -228,11 +228,11 @@ export default function Portfolio() {
       {/* Social Links - Fixed Left Side */}
       <div className="hidden lg:flex fixed left-10 bottom-0 flex-col items-center gap-6 z-10">
         <div className="flex flex-col gap-6 mb-8">
-          <a href="https://github.com/elua-b" target="_blank" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Github size={20} /></a>
-          <a href="https://www.linkedin.com/in/bugingo-elua-b42402231/" target="_blank" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Linkedin size={20} /></a>
-          <a href="mailto:bugingoeloi@gmail.com" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Mail size={20} /></a>
-          <a href="#" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><ExternalLink size={20} /></a>
-          <a href="#" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Link size={20} /></a>
+          <a href="https://github.com/elua-b" target="_blank" aria-label="GitHub" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Github size={20} /></a>
+          <a href="https://www.linkedin.com/in/bugingo-elua-b42402231/" target="_blank" aria-label="LinkedIn" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Linkedin size={20} /></a>
+          <a href="mailto:bugingoeloi@gmail.com" aria-label="Email" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Mail size={20} /></a>
+          <a href="#" aria-label="External Link" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><ExternalLink size={20} /></a>
+          <a href="#" aria-label="Project Link" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Link size={20} /></a>
         </div>
         <div className="block w-px h-24 bg-slate"></div>
       </div>
@@ -336,7 +336,7 @@ export default function Portfolio() {
             <div className="relative z-10 block w-full aspect-square rounded-sm overflow-hidden bg-green translate-x-0 translate-y-0 transition-all duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2">
                <img
                 src="/image.png"
-                alt="Bugingo Elua"
+                alt="Bugingo Elua - Software Engineer Portrait"
                 className="w-full h-full object-cover grayscale mix-blend-multiply transition-all duration-300 group-hover:grayscale-0 group-hover:mix-blend-normal"
               />
             </div>

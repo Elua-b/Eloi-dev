@@ -8,10 +8,47 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
-  title: "Bugingo Elua - Software Engineer",
+  title: "Bugingo Elua | Software Engineer | Full-Stack Developer",
   description:
-    "Portfolio of Bugingo Elua, a dedicated software engineer with 5+ years of experience in full-stack development",
-  generator: "Eloi dev",
+    "Portfolio of Bugingo Elua, a dedicated software engineer with 5+ years of experience in full-stack development, building scalable solutions in Kigali, Rwanda.",
+  keywords: [
+    "Bugingo Elua",
+    "eloi-dev",
+    "eloi-dev.com",
+    "eloi-dev.com",
+    "bugingo eloi",
+    "Elua",
+    "Software Engineer",
+    "Full Stack Developer",
+    "Kigali",
+    "Rwanda",
+    "Next.js",
+    "React",
+    "Node.js",
+    "TypeScript",
+    "EloiT_ech",
+    "Portfolio",
+  ],
+  authors: [{ name: "Bugingo Elua" }],
+  creator: "Bugingo Elua",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://eloidev.netlify.app", // Assuming this is the placeholder URL
+    title: "Bugingo Elua | Software Engineer",
+    description: "Building scalable digital solutions across public and private sectors.",
+    siteName: "Bugingo Elua Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bugingo Elua | Software Engineer",
+    description: "Building scalable digital solutions across public and private sectors.",
+    creator: "@elua_b",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
