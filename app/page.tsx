@@ -514,7 +514,7 @@ export default function Portfolio() {
         </div>
         <div className="space-y-2">
           <p className="font-mono text-[10px] text-slate hover:text-green transition-colors cursor-pointer">
-            Inspired by Brittany Chiang's v4 Portfolio
+            Developed by EloiT_ech business Group
           </p>
           <p className="font-mono text-[10px] text-slate">
             © {new Date().getFullYear()} Bugingo Elua
