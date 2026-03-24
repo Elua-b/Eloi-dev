@@ -12,8 +12,101 @@ import {
   X,
   Link,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+const EXPERIENCE_DATA = [
+  {
+    company: "BRD",
+    fullCompany: "Development Bank of Rwanda",
+    role: "Software Engineer",
+    period: "Jul 2024 – Present",
+    points: [
+      "Contributed to internal platforms supporting financial project management and monitoring",
+      "Worked closely with finance and strategy teams to digitize workflows and streamline data analytics",
+      "Integrated third-party systems with BRD's internal data architecture for efficient reporting",
+    ],
+  },
+  {
+    company: "CKYC Lounge",
+    fullCompany: "CKYC Lounge",
+    role: "Software Developer Consultant",
+    period: "Jan 2025 – Mar 2025",
+    points: [
+      "Developed a sophisticated lounge website with event management and booking systems using React and Node.js",
+      "Implemented real-time booking capabilities and payment gateway integration",
+    ],
+  },
+  {
+    company: "Global Kwik Koders",
+    fullCompany: "Global Kwik Koders",
+    role: "Backend Developer",
+    period: "Jan 2024 – Jun 2024",
+    points: [
+      "Built and maintained scalable APIs for startup clients in e-commerce and logistics",
+      "Integrated CI/CD pipelines and enhanced code quality through rigorous testing",
+    ],
+  },
+  {
+    company: "Grab and Go",
+    fullCompany: "Grab and Go",
+    role: "Backend Developer",
+    period: "Aug 2025 – Dec 2025",
+    points: [
+      "Designed backend architecture using NestJS and PostgreSQL for an intuitive coffee ordering system",
+      "Implemented order queuing, authentication, and mobile payment support",
+    ],
+  },
+  {
+    company: "Secos Company",
+    fullCompany: "Secos Company",
+    role: "Developer Consultant",
+    period: "Apr 2025 – Jun 2025",
+    points: [
+      "Built a professional corporate website using Next.js and Node.js with a focus on business solutions and services",
+      "Implemented secure document sharing and team management features with role-based access control",
+    ],
+  },
+];
+
+function ExperienceTabs() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  return (
+    <div className="flex flex-col md:flex-row gap-8 min-h-[400px]">
+      <div className="flex md:flex-col overflow-x-auto md:overflow-x-visible border-b md:border-b-0 md:border-l-2 border-lightest-navy">
+        {EXPERIENCE_DATA.map((exp, index) => (
+          <button
+            key={exp.company}
+            onClick={() => setActiveTab(index)}
+            className={`px-5 py-3 text-left font-mono text-xs whitespace-nowrap transition-all duration-300 border-b-2 md:border-b-0 md:border-l-2 -mb-[2px] md:mb-0 md:-ml-[2px] ${
+              activeTab === index
+                ? "text-green border-green bg-light-navy"
+                : "text-slate border-transparent hover:text-green hover:bg-light-navy"
+            }`}
+          >
+            {exp.company}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex-1 py-2">
+        <h3 className="text-xl font-medium text-lightest-slate">
+          {EXPERIENCE_DATA[activeTab].role}{" "}
+          <span className="text-green">@ {EXPERIENCE_DATA[activeTab].company}</span>
+        </h3>
+        <p className="font-mono text-xs text-slate mt-2 mb-6">
+          {EXPERIENCE_DATA[activeTab].period}
+        </p>
+        <ul className="space-y-4">
+          {EXPERIENCE_DATA[activeTab].points.map((point, i) => (
+            <li key={i} className="flex gap-4 text-slate text-sm leading-relaxed">
+              <span className="text-green mt-1.5">▹</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -45,157 +138,111 @@ export default function Portfolio() {
     }
   };
 
-  const downloadResume = () => {
-    const link = document.createElement("a");
-    link.href = "/resume.pdf";
-    link.download = "Bugingo_Elua_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const resumeUrl = "/BUGINGO_Elua_resume.pdf";
+  const resumeDownloadName = "BUGINGO_Elua_resume.pdf";
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-300">
+    <div className="min-h-screen bg-navy text-gray-300">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 border-2 border-gray-400 rotate-45 flex items-center justify-center">
-              <span className="text-gray-300 font-bold -rotate-45 text-sm">
-                E
-              </span>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/85 backdrop-blur-md px-10 h-20 flex items-center justify-between transition-all duration-300">
+        <div className="flex items-center justify-between w-full max-w-[1600px] mx-auto">
+          <div className="group cursor-pointer">
+            <div className="relative w-10 h-10 flex items-center justify-center border-2 border-green rounded-sm transition-all duration-300 hover:-translate-x-1 hover:-translate-y-1">
+              <span className="text-green font-bold text-lg font-mono">E</span>
+              <div className="absolute inset-0 border-2 border-green rounded-sm opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-all duration-300 -z-10"></div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection("about")}
-              className={`text-sm transition-colors ${
-                activeSection === "about"
-                  ? "text-white"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("experience")}
-              className={`text-sm transition-colors ${
-                activeSection === "experience"
-                  ? "text-white"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className={`text-sm transition-colors ${
-                activeSection === "projects"
-                  ? "text-white"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className={`text-sm transition-colors ${
-                activeSection === "contact"
-                  ? "text-white"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              Contact
-            </button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white bg-transparent"
-              onClick={downloadResume}
+            <ol className="flex items-center gap-6 list-none p-0 m-0">
+              {[
+                { name: "About", id: "about" },
+                { name: "Experience", id: "experience" },
+                { name: "Work", id: "projects" },
+                { name: "Contact", id: "contact" }
+              ].map((item, index) => (
+                <li key={item.id} className="flex items-center gap-1">
+                  <span className="font-mono text-green text-[13px]">0{index + 1}.</span>
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-lightest-slate hover:text-green text-[13px] font-mono transition-colors"
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ))}
+            </ol>
+            <a
+              href={resumeUrl}
+              download={resumeDownloadName}
+              className="ml-4 px-5 py-2.5 text-[13px] font-mono border border-green text-green rounded transition-all duration-300 bg-transparent hover:bg-green/10"
             >
               Resume
-            </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-300"
+            className="md:hidden text-green"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#0a0a0a] border-t border-gray-800 px-6 py-4 space-y-4">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="block text-sm text-gray-400 hover:text-white"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("experience")}
-              className="block text-sm text-gray-400 hover:text-white"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="block text-sm text-gray-400 hover:text-white"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="block text-sm text-gray-400 hover:text-white"
-            >
-              Contact
-            </button>
-            <button
-              onClick={downloadResume}
-              className="block text-sm text-gray-400 hover:text-white"
-            >
-              Resume
-            </button>
+          <div className="md:hidden fixed inset-0 z-40 bg-navy/95 backdrop-blur-sm flex items-center justify-center">
+            <nav className="flex flex-col items-center gap-10">
+              <ol className="flex flex-col items-center gap-8 list-none p-0 m-0">
+                {[
+                  { name: "About", id: "about" },
+                  { name: "Experience", id: "experience" },
+                  { name: "Work", id: "projects" },
+                  { name: "Contact", id: "contact" }
+                ].map((item, index) => (
+                  <li key={item.id} className="flex flex-col items-center gap-2">
+                    <span className="font-mono text-green text-sm">0{index + 1}.</span>
+                    <button
+                      onClick={() => scrollToSection(item.id)}
+                      className="text-lightest-slate hover:text-green text-xl font-mono transition-colors"
+                    >
+                      {item.name}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+              <a
+                href={resumeUrl}
+                download={resumeDownloadName}
+                className="button-bc text-lg px-12 py-5"
+              >
+                Resume
+              </a>
+            </nav>
           </div>
         )}
       </nav>
 
       {/* Social Links - Fixed Left Side */}
-      <div className="hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 flex-col gap-6 z-40">
-        <a
-          href="https://github.com/elua-b"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
-          <Github size={20} />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/bugingo-elua-b42402231/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
-          <Linkedin size={20} />
-        </a>
-        <a
-          href="mailto:bugingoeloi@gmail.com"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
-          <Mail size={20} />
-        </a>
+      <div className="hidden lg:flex fixed left-10 bottom-0 flex-col items-center gap-6 z-10">
+        <div className="flex flex-col gap-6 mb-8">
+          <a href="https://github.com/elua-b" target="_blank" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Github size={20} /></a>
+          <a href="https://www.linkedin.com/in/bugingo-elua-b42402231/" target="_blank" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Linkedin size={20} /></a>
+          <a href="mailto:bugingoeloi@gmail.com" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Mail size={20} /></a>
+          <a href="#" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><ExternalLink size={20} /></a>
+          <a href="#" className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300"><Link size={20} /></a>
+        </div>
+        <div className="block w-px h-24 bg-slate"></div>
       </div>
 
       {/* Email - Fixed Right Side */}
-      <div className="hidden lg:block fixed right-6 top-1/2 -translate-y-1/2 z-40">
+      <div className="hidden lg:flex fixed right-10 bottom-0 flex-col items-center gap-6 z-10">
+        <div className="block w-px h-24 bg-slate mb-8"></div>
         <a
           href="mailto:bugingoeloi@gmail.com"
-          className="text-gray-400 hover:text-white transition-colors text-xs tracking-widest"
+          className="text-light-slate hover:text-green hover:-translate-y-1 transition-all duration-300 font-mono text-[12px] tracking-widest"
           style={{ writingMode: "vertical-rl" }}
         >
           bugingoeloi@gmail.com
@@ -203,784 +250,274 @@ export default function Portfolio() {
       </div>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center pt-20 px-6">
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <p className="text-sm text-gray-400 tracking-wide">
-              Hi, my name is
-            </p>
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+      <section id="home" className="h-screen flex flex-col justify-center px-6 max-w-[1000px] mx-auto pt-[180px] md:pt-[220px]">
+        <div className="space-y-4 md:space-y-1">
+          <p className="font-mono text-green tracking-wide text-[16px] mb-4">
+            Hi, my name is
+          </p>
+          <div className="space-y-2">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-bold text-lightest-slate leading-[1.1]">
               Bugingo Elua.
             </h1>
-            <p className="text-2xl md:text-3xl text-gray-400 leading-relaxed">
-              I use code to build scalable solutions that drive impact.
-            </p>
-            <p className="text-gray-400 leading-relaxed max-w-xl">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-[70px] font-bold text-slate leading-[0.9]">
+              I use code to build scalable solutions.
+            </h2>
+          </div>
+          <div className="max-w-[540px] pt-8">
+            <p className="text-slate text-lg md:text-[20px] leading-relaxed">
               I'm a dedicated software engineer with over 5 years of hands-on
               experience in full-stack development, delivering impactful digital
-              solutions across public and private sectors. I specialize in
-              building scalable applications, optimizing backend systems, and
-              collaborating with cross-functional teams to bring ideas to life.
+              solutions across public and private sectors.
             </p>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white mt-4 bg-transparent"
-              onClick={() => scrollToSection("contact")}
-            >
-              Talk to me
-            </Button>
           </div>
-
-          <div className="relative">
-            <div className="relative w-full max-w-md mx-auto">
-              <div className="absolute inset-0 bg-gray-700 rounded-lg transform rotate-6"></div>
-              <div className="relative bg-gray-800 rounded-lg overflow-hidden border-4 border-gray-700">
-                <img
-                  src="/eloi.jpg"
-                  alt="Bugingo Elua"
-                  className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            </div>
+          <div className="pt-12">
+            <button
+              className="button-bc text-sm px-7 py-4"
+              onClick={() => scrollToSection("projects")}
+            >
+              Check out my work!
+            </button>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center px-6 py-20">
-        <div className="max-w-4xl mx-auto w-full">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              About Me
-            </h2>
-            <div className="flex-1 h-px bg-gray-800"></div>
+      <section id="about" className="py-24 px-6 max-w-[900px] mx-auto">
+        <h2 className="section-heading" data-number="01.">
+          About Me
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-12 text-slate leading-relaxed">
+          <div className="md:col-span-2 space-y-4">
+            <p>
+              Hello! I'm Bugingo Elua, a software engineer based in Kigali,
+              Rwanda. I code with purpose, precision, and passion — whether
+              it's supporting a tech startup, contributing to national memory
+              preservation, or working on fintech tools for development banks.
+            </p>
+            <p>
+              From building backend architectures for French press ordering
+              systems to creating digital archives that preserve Rwanda's
+              national identity, I bring dedication and technical excellence
+              to every project.
+            </p>
+            <p>
+              I'm currently contributing to internal platforms at the
+              Development Bank of Rwanda (BRD), supporting financial project
+              management and monitoring while working closely with finance and
+              strategy teams to digitize workflows.
+            </p>
+            <p>
+              Here are a few technologies I've been working with recently:
+            </p>
+            <ul className="grid grid-cols-2 gap-2 text-sm font-mono mt-4">
+              <li className="flex items-center gap-2">
+                <span className="text-green">▹</span> JavaScript (ES6+)
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green">▹</span> React & Next.js
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green">▹</span> Node.js & NestJS
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green">▹</span> TypeScript
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green">▹</span> PostgreSQL & MongoDB
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green">▹</span> Spring Boot & Laravel
+              </li>
+            </ul>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-4 text-gray-400 leading-relaxed">
-              <p>
-                Hello! I'm Bugingo Elua, a software engineer based in Kigali,
-                Rwanda. I code with purpose, precision, and passion — whether
-                it's supporting a tech startup, contributing to national memory
-                preservation, or working on fintech tools for development banks.
-              </p>
-              <p>
-                From building backend architectures for French press ordering
-                systems to creating digital archives that preserve Rwanda's
-                national identity, I bring dedication and technical excellence
-                to every project.
-              </p>
-              <p>
-                I'm currently contributing to internal platforms at the
-                Development Bank of Rwanda (BRD), supporting financial project
-                management and monitoring while working closely with finance and
-                strategy teams to digitize workflows.
-              </p>
-              <p className="text-white font-medium">
-                Here are a few technologies I've been working with recently:
-              </p>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500">▹</span>
-                  <span>JavaScript (ES6+)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500">▹</span>
-                  <span>React & Next.js</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500">▹</span>
-                  <span>Node.js & NestJS</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500">▹</span>
-                  <span>TypeScript</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500">▹</span>
-                  <span>PostgreSQL & MongoDB</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-gray-500">▹</span>
-                  <span>Spring Boot & Laravel</span>
-                </div>
-              </div>
+          <div className="relative group max-w-[300px] mx-auto md:mx-0">
+            <div className="relative z-10 block w-full aspect-square rounded-sm overflow-hidden bg-green translate-x-0 translate-y-0 transition-all duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2">
+               <img
+                src="/image.png"
+                alt="Bugingo Elua"
+                className="w-full h-full object-cover grayscale mix-blend-multiply transition-all duration-300 group-hover:grayscale-0 group-hover:mix-blend-normal"
+              />
             </div>
-
-            <div className="relative">
-              <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <h3 className="text-xl font-bold text-white mb-4">Education</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-white font-medium">
-                      Software Engineering & Embedded Systems
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      Rwanda Coding Academy (RCA)
-                    </p>
-                    <p className="text-sm text-gray-500">2020 – Present</p>
-                  </div>
-                  <div className="pt-4 border-t border-gray-700">
-                    <p className="text-white font-medium">Certifications</p>
-                    <ul className="text-sm text-gray-400 space-y-1 mt-2">
-                      <li>• JavaScript Algorithms & Data Structures</li>
-                      <li>• Backend APIs Certification</li>
-                      <li>• Best Frontend Developer (RCA)</li>
-                      <li>• Best Backend Developer (RCA)</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="absolute inset-0 border-2 border-green rounded-sm translate-x-5 translate-y-5 -z-10 transition-all duration-300 group-hover:translate-x-3 group-hover:translate-y-3"></div>
           </div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section
-        id="experience"
-        className="min-h-screen flex items-center px-6 py-20"
-      >
-        <div className="max-w-4xl mx-auto w-full">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Experience
-            </h2>
-            <div className="flex-1 h-px bg-gray-800"></div>
-          </div>
+      <section id="experience" className="py-24 px-6 max-w-[700px] mx-auto">
+        <h2 className="section-heading" data-number="02.">
+          Where I've Worked
+        </h2>
 
-          <div className="space-y-8">
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Software Engineer
-                  </h3>
-                  <p className="text-gray-400">
-                    Development Bank of Rwanda (BRD)
-                  </p>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Jul 2024 – Present
-                </p>
-              </div>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Contributed to internal platforms supporting financial
-                    project management and monitoring
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Worked closely with finance and strategy teams to digitize
-                    workflows and streamline data analytics
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Integrated third-party systems with BRD's internal data
-                    architecture for efficient reporting
-                  </span>
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Backend Developer
-                  </h3>
-                  <p className="text-gray-400">Global Kwik Koders</p>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Jan 2024 – Jun 2024
-                </p>
-              </div>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Built and maintained scalable APIs for startup clients in
-                    e-commerce and logistics
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Integrated CI/CD pipelines and enhanced code quality through
-                    rigorous testing
-                  </span>
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Software Developer Consultant
-                  </h3>
-                  <p className="text-gray-400">
-                    CKYC Lounge (Hospitality eCommerce)
-                  </p>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Jan 2025 – Mar 2025
-                </p>
-              </div>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Developed a sophisticated lounge website with event management and booking systems using React and Node.js
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Implemented real-time booking capabilities and payment gateway integration
-                  </span>
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Developer Consultant
-                  </h3>
-                  <p className="text-gray-400">
-                    Secos Company (Business Services eCommerce)
-                  </p>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Apr 2025 – Jun 2025
-                </p>
-              </div>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Built a professional corporate website using Next.js and Node.js with a focus on business solutions and services
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Implemented secure document sharing and team management features with role-based access control
-                  </span>
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Full Stack Developer
-                  </h3>
-                  <p className="text-gray-400">
-                    Uncles Restaurant (Dining & Online Ordering)
-                  </p>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Jul 2025 – Sep 2025
-                </p>
-              </div>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Created a full-featured restaurant platform with React and Spring Boot for menu management and online ordering
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Integrated real-time order tracking and table reservation system
-                  </span>
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Software Developer Consultant
-                  </h3>
-                  <p className="text-gray-400">
-                    Kingfisher Hotel (Hospitality & Booking)
-                  </p>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Sep 2025 – Nov 2025
-                </p>
-              </div>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Developed a premium hotel booking platform using React and NestJS with a focus on user experience
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Implemented secure payment processing and multi-language support
-                  </span>
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Backend Developer
-                  </h3>
-                  <p className="text-gray-400">
-                    Grab and Go (French Press Ordering App)
-                  </p>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 md:mt-0">
-                  Aug 2025 – Dec 2025
-                </p>
-              </div>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Designed backend architecture using NestJS and PostgreSQL
-                    for an intuitive coffee ordering system
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-gray-600 mt-1">▹</span>
-                  <span>
-                    Implemented order queuing, authentication, and mobile
-                    payment support
-                  </span>
-                </li>
-              </ul>
-            </Card>
-          </div>
-        </div>
+        <ExperienceTabs />
       </section>
 
-      {/* Projects Section */}
-      <section
-        id="projects"
-        className="min-h-screen flex items-center px-6 py-20"
-      >
-        <div className="max-w-4xl mx-auto w-full">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Key Projects
-            </h2>
-            <div className="flex-1 h-px bg-gray-800"></div>
-          </div>
+           {/* Projects Section */}
+      <section id="projects" className="py-24 px-6 max-w-[1000px] mx-auto">
+        <h2 className="section-heading" data-number="03.">
+          Some Things I've Built
+        </h2>
 
-          <div className="space-y-8">
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  GrabAndGo-FrenchPress{" "}
-                </h3>
-                <ExternalLink
-                  className="text-gray-500 hover:text-white transition-colors"
-                  size={20}
-                />
-              </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
+        <div className="space-y-24">
+          {/* Featured Project 1 */}
+          <div className="relative grid grid-cols-12 gap-2 items-center">
+            <div className="col-span-12 md:col-span-7 relative z-10">
+              <p className="font-mono text-green text-xs mb-2">Featured Project</p>
+              <h3 className="text-2xl font-bold text-lightest-slate mb-4 hover:text-green cursor-pointer">
+                GrabAndGo-FrenchPress
+              </h3>
+              <div className="bg-light-navy p-6 rounded-sm shadow-xl text-slate text-sm leading-relaxed mb-4">
                 As a Software Developer on the Grab and Go project, I
                 contributed to building a coffee ordering application that
                 allows users to order and prepay for coffee from cafés across
                 Kigali. I worked on developing a responsive user interface,
                 integrating secure payment and location-based services, and
-                implementing APIs for order and menu management. My role
-                involved collaborating with a cross-functional team to ensure a
-                seamless, user-friendly, and efficient coffee ordering
-                experience.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Next js
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Nest js
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  PostgreSQL
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  AWS
-                </span>
+                implementing APIs for order and menu management.
               </div>
-            </Card>
+              <ul className="flex flex-wrap gap-4 font-mono text-xs text-slate list-none p-0">
+                <li>Next.js</li>
+                <li>NestJS</li>
+                <li>PostgreSQL</li>
+                <li>AWS</li>
+              </ul>
+              <div className="flex gap-4 mt-6 text-lightest-slate">
+                <Github size={20} className="hover:text-green cursor-pointer" />
+                <ExternalLink size={20} className="hover:text-green cursor-pointer" />
+              </div>
+            </div>
+            <div className="hidden md:block col-span-12 md:col-span-7 md:col-start-6 relative rounded-sm overflow-hidden h-[350px] bg-green/20 border border-lightest-navy group">
+              <div className="absolute inset-0 bg-green/30 mix-blend-multiply group-hover:bg-transparent transition-all duration-300"></div>
+              <div className="w-full h-full bg-lightest-navy"></div>
+            </div>
+          </div>
 
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  Health Management tools and systems - Global Kwik Koders
-                </h3>
-                <ExternalLink
-                  className="text-gray-500 hover:text-white transition-colors"
-                  size={20}
-                />
-              </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
+          {/* Featured Project 2 (Mirrored) */}
+          <div className="relative grid grid-cols-12 gap-2 items-center">
+             <div className="hidden md:block col-span-12 md:col-span-7 relative rounded-sm overflow-hidden h-[350px] bg-green/20 border border-lightest-navy group">
+              <div className="absolute inset-0 bg-green/30 mix-blend-multiply group-hover:bg-transparent transition-all duration-300"></div>
+              <div className="w-full h-full bg-lightest-navy"></div>
+            </div>
+            <div className="col-span-12 md:col-span-7 md:col-start-6 relative z-10 text-right">
+              <p className="font-mono text-green text-xs mb-2">Featured Project</p>
+              <h3 className="text-2xl font-bold text-lightest-slate mb-4 hover:text-green cursor-pointer">
+                Health Management Tools
+              </h3>
+              <div className="bg-light-navy p-6 rounded-sm shadow-xl text-slate text-sm leading-relaxed mb-4 text-left md:text-right">
                 I worked on the Rwanda Health Insurance Portal (RHIP), a
                 health-tech middleware that integrates medical records and
                 insurance systems to automate eligibility checks, prevent fraud,
-                and streamline claims management. In addition, I contributed to
-                several internal projects focused on improving system
-                efficiency, data integration, and process automation within the
-                organization.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Angular
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Spring Boot
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  MySQL
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Docker
-                </span>
+                and streamline claims management.
               </div>
-            </Card>
+              <ul className="flex flex-wrap gap-4 font-mono text-xs text-slate list-none p-0 justify-end">
+                <li>Angular</li>
+                <li>Spring Boot</li>
+                <li>MySQL</li>
+                <li>Docker</li>
+              </ul>
+              <div className="flex gap-4 mt-6 text-lightest-slate justify-end">
+                <Github size={20} className="hover:text-green cursor-pointer" />
+                <ExternalLink size={20} className="hover:text-green cursor-pointer" />
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  BRD Digital Tools
-                </h3>
-                <ExternalLink
-                  className="text-gray-500 hover:text-white transition-colors"
-                  size={20}
-                />
+        <div className="mt-40">
+           <div className="bg-light-navy/50 p-8 rounded-sm shadow-sm border border-lightest-navy/30">
+              <h3 className="text-xl font-bold text-lightest-slate mb-6 text-center">Other Noteworthy Projects</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { title: "BRD Digital Tools", tech: ["Next.js", "NestJS", "PostgreSQL"] },
+                  { title: "CKYC Lounge", tech: ["Next.js", "Node.js", "MongoDB"] },
+                  { title: "Secos Company", tech: ["React", "Express", "PostgreSQL"] },
+                  { title: "Uncles Restaurant", tech: ["Vue.js", "Laravel", "MySQL"] },
+                  { title: "Kingfisher Hotel", tech: ["Angular", "Spring Boot", "MongoDB"] },
+                ].map((p, i) => (
+                  <div key={i} className="bg-light-navy p-6 rounded-sm shadow-lg hover:-translate-y-2 transition-all duration-300 group flex flex-col items-start text-left">
+                    <div className="flex justify-between items-center w-full mb-8">
+                      <div className="text-green"><Link size={40} /></div>
+                      <div className="flex gap-4 text-slate group-hover:text-green">
+                        <Github size={20} className="cursor-pointer" />
+                        <ExternalLink size={20} className="cursor-pointer" />
+                      </div>
+                    </div>
+                    <h4 className="text-lg font-bold text-lightest-slate group-hover:text-green mb-2">{p.title}</h4>
+                    <p className="text-slate text-xs mb-6">Contributed to building scalable solutions and digital tools for various sectors including finance, hospitality, and e-commerce.</p>
+                    <ul className="flex flex-wrap gap-3 font-mono text-[10px] text-slate mt-auto list-none p-0">
+                      {p.tech.map(t => <li key={t}>{t}</li>)}
+                    </ul>
+                  </div>
+                ))}
               </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                Contributed to platforms for investment tracking, project
-                performance visualization, and funding request management.
-                Helped integrate third-party systems with BRD's internal data
-                architecture for more efficient reporting and decision-making.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Next.js
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  NestJS
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  PostgreSQL
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  TypeScript
-                </span>
-              </div>
-            </Card>
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  CKYC Lounge - Hospitality eCommerce
-                </h3>
-              </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                As a Software Developer Consultant, I developed a sophisticated lounge website showcasing events, booking systems, and ambient services. The platform features a modern UI/UX design, real-time booking capabilities, and seamless integration with payment gateways. I implemented secure user authentication, event management, and a responsive design that works across all devices.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Next.js
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Node.js
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  MongoDB
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  TypeScript
-                </span>
-              </div>
-              <p className="text-sm text-gray-500 mt-3">Jan 2025 - Mar 2025</p>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  Secos Company - Business Services eCommerce
-                </h3>
-              </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                As a Developer Consultant, I built a professional corporate website presenting business solutions, services, and company identity. The platform includes a content management system for easy updates, service showcases, and client portals. I implemented secure document sharing, team management features, and integrated analytics for tracking user engagement and lead generation.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  React
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Express
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  PostgreSQL
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  AWS
-                </span>
-              </div>
-              <p className="text-sm text-gray-500 mt-3">Apr 2025 - Jun 2025</p>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  Uncles Restaurant - Dining & Online Ordering
-                </h3>
-              </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                As a Developer Consultant, I created a full-featured restaurant website with menu presentation, venue information, and online ordering capabilities. The platform includes table reservation, food delivery integration, and real-time order tracking. I implemented a user-friendly admin dashboard for menu management, order processing, and customer relationship management.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Vue.js
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Laravel
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  MySQL
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  DigitalOcean
-                </span>
-              </div>
-              <p className="text-sm text-gray-500 mt-3">Jul 2025 - Sep 2025</p>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6 hover:border-gray-700 transition-colors">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">
-                  Kingfisher Hotel - Hospitality & Booking
-                </h3>
-              </div>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                As a Developer Consultant, I developed a premium hotel website showcasing amenities, rooms, booking system, and guest services. The platform features a room availability checker, online booking system, and integration with property management software. I implemented a responsive design, multi-language support, and secure payment processing to enhance the guest booking experience.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Angular
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Spring Boot
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  MongoDB
-                </span>
-                <span className="text-xs px-3 py-1 bg-gray-800 text-gray-300 rounded-full">
-                  Google Cloud
-                </span>
-              </div>
-              <p className="text-sm text-gray-500 mt-3">Sep 2025 - Nov 2025</p>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-0 overflow-hidden hover:border-gray-700 transition-colors">
-              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
-                <h3 className="text-xl font-bold text-white">
-                  Check All Personal Projects ---
-                </h3>
-                <a
+              <div className="mt-12 text-center">
+                 <a
                   href="https://eloiprojects.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                  className="button-bc"
                 >
-                  <span>View all projects</span>
+                  View all projects
                 </a>
               </div>
-            </Card>
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Skills Section */}
-      <section
-        id="skills"
-        className="min-h-screen flex items-center px-6 py-20"
-      >
-        <div className="max-w-4xl mx-auto w-full">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Technical Skills
-            </h2>
-            <div className="flex-1 h-px bg-gray-800"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-gray-900 border-gray-800 p-6">
-              <h3 className="text-lg font-bold text-white mb-4">Languages</h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  JavaScript
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  TypeScript
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  Java
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  PHP
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  HTML/CSS
-                </span>
-              </div>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6">
-              <h3 className="text-lg font-bold text-white mb-4">Frontend</h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  React
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  Next.js
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  Angular
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  React Native
-                </span>
-              </div>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6">
-              <h3 className="text-lg font-bold text-white mb-4">Backend</h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  Node.js
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  NestJS
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  Spring Boot
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  Laravel
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  Django
-                </span>
-              </div>
-            </Card>
-
-            <Card className="bg-gray-900 border-gray-800 p-6">
-              <h3 className="text-lg font-bold text-white mb-4">Databases</h3>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  PostgreSQL
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  MongoDB
-                </span>
-                <span className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm">
-                  MySQL
-                </span>
-              </div>
-            </Card>
-          </div>
-
-          <Card className="bg-gray-900 border-gray-800 p-6 mt-8">
-            <h3 className="text-lg font-bold text-white mb-4">Languages</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-gray-400">
-              <div>
-                <p className="font-medium text-white">English</p>
-                <p className="text-sm">Full Professional Proficiency</p>
-              </div>
-              <div>
-                <p className="font-medium text-white">French</p>
-                <p className="text-sm">Professional Working Proficiency</p>
-              </div>
-              <div>
-                <p className="font-medium text-white">Swahili</p>
-                <p className="text-sm">Professional Working Proficiency</p>
-              </div>
+      <section id="skills" className="py-24 px-6 max-w-[900px] mx-auto">
+        <h2 className="section-heading" data-number="04.">
+          Technical Skills
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {[
+            { title: "Languages", items: ["JavaScript", "TypeScript", "Java", "PHP", "HTML/CSS"] },
+            { title: "Frontend", items: ["React", "Next.js", "Angular", "React Native", "Tailwind CSS"] },
+            { title: "Backend", items: ["Node.js", "NestJS", "Spring Boot", "Laravel", "Django"] },
+            { title: "Databases", items: ["PostgreSQL", "MongoDB", "MySQL", "Redis"] },
+          ].map((cat) => (
+            <div key={cat.title} className="bg-light-navy p-6 rounded-sm border border-lightest-navy/30">
+              <h3 className="text-lg font-bold text-lightest-slate mb-4 font-mono select-none">{cat.title}</h3>
+              <ul className="grid grid-cols-2 gap-2 text-sm font-mono list-none p-0">
+                {cat.items.map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <span className="text-green text-[10px]">▹</span> {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </Card>
+          ))}
         </div>
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="min-h-screen flex items-center px-6 py-20"
-      >
-        <div className="max-w-2xl mx-auto w-full text-center">
-          <p className="text-sm text-gray-400 mb-4">What's Next?</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Get In Touch
-          </h2>
-          <p className="text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto">
-            I'm currently open to new opportunities and interesting projects.
-            Whether you have a question, want to collaborate, or just want to
-            say hi, feel free to reach out. I'll do my best to get back to you!
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <a
-              href="mailto:bugingoeloi@gmail.com"
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-            >
-              <Mail size={20} />
-              <span>bugingoeloi@gmail.com</span>
-            </a>
-            <a
-              href="tel:+250788420127"
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-            >
-              <Phone size={20} />
-              <span>+250788420127</span>
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2 justify-center text-gray-400 mb-8">
-            <MapPin size={20} />
-            <span>Kigali, Rwanda</span>
-          </div>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white bg-transparent"
-            onClick={() =>
-              (window.location.href = "mailto:bugingoeloi@gmail.com")
-            }
-          >
-            Say Hello
-          </Button>
-        </div>
+      <section id="contact" className="py-40 px-6 max-w-[600px] mx-auto text-center">
+        <p className="font-mono text-green text-sm mb-4">05. What's Next?</p>
+        <h2 className="text-4xl md:text-6xl font-bold text-lightest-slate mb-6">Get In Touch</h2>
+        <p className="text-slate mb-12">
+          I'm currently looking for new opportunities and my inbox is always open.
+          Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          <br /><span className="text-green mt-4 block font-mono">+250 788 420 127</span>
+        </p>
+        <a href="mailto:bugingoeloi@gmail.com" className="button-bc text-lg px-12 py-5">
+          Say Hello
+        </a>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 py-8 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-sm text-gray-500">
-            Designed & Built by Bugingo Elua
+      <footer className="py-8 text-center">
+        <div className="flex lg:hidden justify-center gap-6 mb-4 text-light-slate">
+           <a href="https://github.com/elua-b" className="hover:text-green"><Github size={20} /></a>
+           <a href="https://www.linkedin.com/in/bugingo-elua-b42402231/" className="hover:text-green"><Linkedin size={20} /></a>
+           <a href="mailto:bugingoeloi@gmail.com" className="hover:text-green"><Mail size={20} /></a>
+        </div>
+        <div className="space-y-2">
+          <p className="font-mono text-[10px] text-slate hover:text-green transition-colors cursor-pointer">
+            Inspired by Brittany Chiang's v4 Portfolio
+          </p>
+          <p className="font-mono text-[10px] text-slate">
+            © {new Date().getFullYear()} Bugingo Elua
           </p>
         </div>
       </footer>
